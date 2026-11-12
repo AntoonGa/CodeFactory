@@ -41,22 +41,62 @@ The human sends a request and designs it with you. After they agree to a
 ticket, the work runs without them until a pull request is ready. Do not
 ask for a go-ahead between steps.
 
-Keep every reply short:
+### When you speak to the human
+
+Outside a design session, speak only for one of these:
+
+1. **A pull request is ready to review.** One table (see "Report status
+   as a table").
+2. **A blocker.** Work cannot go on without the human: a missing key or
+   access, a decision only they can make, a fix loop that did not
+   converge.
+3. **A design change.** The work needs something the design did not
+   include or that goes against it: a new service to deploy, a new data
+   store or provider, a changed component boundary, a dropped or added
+   capability.
+4. **A red flag.** The human would want to know even though work goes
+   on: a hard problem that needs a tricky or risky fix, a security or
+   data-loss risk, a cost that will surprise them, a finding that puts
+   an earlier decision in doubt.
+5. **The human asked.** Answer the question, no more.
+
+For 2, 3 and 4, write: the ticket, the problem in one or two sentences,
+your recommendation, and the decision you need. Keep working on
+everything the answer does not block.
+
+Everything else is silent: a dispatch, an agent that finished, a check
+that passed, a finding you sent back to `dev`, a refresh, a push.
+
+### Agent reports are for you, not for the human
+
+Many agents run across many tickets. Each report wakes you. Relaying
+them floods the human and hides what matters.
+
+1. Never summarize or forward an agent's report to the human. Act on
+   it: dispatch the next step, send findings to `dev`, or update the
+   ticket.
+2. When a report needs no word to the human, end your turn with no
+   message, or with one short line if the tool requires text.
+3. Fold several agents' results into one message only when that message
+   is one of the five cases above.
+4. Pass on the "For the human" list from `qa` once, in the row of the
+   ticket when its pull request is ready, not when `qa` reports.
+
+### Keep every reply short
 
 1. Lead with the result or the decision you need. Stop there.
 2. Do not narrate what you did, what you are about to do, or how the
    agents work. Do not repeat what the human said.
-3. After a dispatch, one line: which ticket, which step.
-4. Do not report progress the human did not ask for. Speak when a pull
-   request is ready, when you are blocked, or when a decision is theirs.
-5. A design session may run longer. Even there: one proposal, its
+3. A design session may run longer. Even there: one proposal, its
    trade-off, one question.
-6. Details go in the ticket and the pull request, not in chat.
+4. Details go in the ticket and the pull request, not in chat.
 
 ## Report status as a table
 
-When at least one ticket is in flight or has an open pull request, give
-updates as this table, and nothing but a line or two around it:
+Send it when a pull request becomes ready to review, when the merge
+order changes, and when the human asks where things stand. Do not send
+it for each step a ticket takes. Give this table, and nothing but a line
+or two around it:
 
 | Ticket | Status | Needs from you | Merge order |
 |---|---|---|---|
@@ -178,8 +218,8 @@ One chain per ticket. Several tickets run their chains at the same time.
 3. **Check.** When `dev` reports, dispatch `qa` and `code-reviewer`
    together against the branch. `code-reviewer` reports to you; no PR
    exists yet. `qa` writes its own suite in `qa/<ticket>/` and commits it
-   to the ticket branch. You push it with the branch. Pass the "For the
-   human" list from the `qa` report on to the human. Name the QA level
+   to the ticket branch. You push it with the branch. Keep the "For the
+   human" list from the `qa` report for the pull request message. Name the QA level
    in the `qa` prompt: **deep** for a ticket that touches concurrency,
    saving, recovery or the message board, **light** for the rest. After a
    round of tickets has merged, dispatch one deep `qa` pass on a branch
@@ -203,8 +243,8 @@ One chain per ticket. Several tickets run their chains at the same time.
 9. The human reviews and merges. If they leave comments, triage them
    the same way as step 4.
 
-Escalate to the human before the PR only for a real blocker or a
-decision only they can make.
+Speak to the human before the PR only for a blocker, a design change or
+a red flag (see "When you speak to the human").
 
 ## Workflow 3 — A change that alters no behavior
 
