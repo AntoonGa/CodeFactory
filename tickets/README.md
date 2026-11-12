@@ -58,4 +58,5 @@ Never skip a stage. Who moves a ticket:
 ## Numbering
 
 Sequential, zero-padded, never reused: `TICKET-0001`, `TICKET-0002`, ...
+`TICKET-0000` is always the migration of CodeFactory into the repo.
 Check existing files before assigning the next number.

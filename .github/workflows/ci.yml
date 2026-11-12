@@ -13,21 +13,26 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
-# The job is named `check`: the main ruleset requires a status check with that
-# name. It runs `just ci`, so CI and the agents run the very same checks.
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
 
-      - name: Install just
-        uses: extractions/setup-just@v3
+      - name: Install uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
 
-      # Add the setup for your stack here, for example:
-      # - uses: astral-sh/setup-uv@v6        # Python
-      # - uses: actions/setup-node@v4        # Node
-      # Pin third-party actions to a commit SHA once the project matters.
+      - name: Sync dependencies
+        run: uv sync --locked
 
-      - name: Run the checks
-        run: just ci
+      - name: Ruff format check
+        run: uv run ruff format --check .
+
+      - name: Ruff lint
+        run: uv run ruff check .
+
+      - name: Pyright type check
+        run: uv run pyright
+
+      - name: Pytest
+        run: uv run pytest

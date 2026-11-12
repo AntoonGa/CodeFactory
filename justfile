@@ -1,8 +1,5 @@
 # Project tasks. Run `just` to list them.
 # Small features a person can run by hand go in the group "try it".
-#
-# The recipes below are stubs. Replace each body with your stack's commands.
-# See docs/ADOPTING.md for a Python (uv) and a Node example.
 
 set windows-shell := ["C:/Program Files/Git/usr/bin/bash.exe", "-uc"]
 
@@ -10,20 +7,36 @@ set windows-shell := ["C:/Program Files/Git/usr/bin/bash.exe", "-uc"]
 list:
 	@just --list
 
-# format + lint with autofix
-[group("lint")]
-lint:
-	@echo "STUB: configure 'lint' in the justfile for your stack"
+# sync the venv with the dev dependencies
+[group("python")]
+env:
+	uv sync
 
-# static type check
-[group("lint")]
-typecheck:
-	@echo "STUB: configure 'typecheck' in the justfile for your stack"
+# install the git pre-commit hooks
+[group("python")]
+hooks:
+	uv run pre-commit install
 
 # run all tests
-[group("test")]
+[group("python")]
 test:
-	@echo "STUB: configure 'test' in the justfile for your stack"
+	uv run pytest
+
+# run one ticket's QA suite (not part of CI), for example: just qa TICKET-0003
+[group("python")]
+qa ticket:
+	uv run pytest qa/{{ticket}} -p no:cacheprovider
+
+# ruff format + lint with autofix
+[group("lint")]
+lint:
+	uv run ruff format .
+	uv run ruff check . --fix
+
+# pyright type check
+[group("lint")]
+typecheck:
+	uv run pyright
 
 # lint + typecheck + tests — run before every push
 [group("lint")]
@@ -32,12 +45,10 @@ check: lint typecheck test
 # the same checks CI runs, without autofix
 [group("lint")]
 ci:
-	@echo "STUB: configure 'ci' in the justfile for your stack (no autofix)"
-
-# run one ticket's QA suite (not part of CI), for example: just qa TICKET-0003
-[group("test")]
-qa ticket:
-	@echo "STUB: configure 'qa' in the justfile for your stack, run qa/{{ticket}}"
+	uv run ruff format --check .
+	uv run ruff check .
+	uv run pyright
+	uv run pytest
 
 # create a new branch and check it out
 [group("git actions")]
@@ -50,6 +61,12 @@ goto branch:
 	git checkout {{branch}}
 	git pull
 	git status
+
+# stage everything and commit with an empty message
+[group("git actions")]
+commit:
+	git add -A
+	git commit --allow-empty-message -m ""
 
 # push the current branch and open a PR titled after the branch name
 [group("git actions")]

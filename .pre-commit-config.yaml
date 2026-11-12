@@ -18,13 +18,25 @@ repos:
       - id: pretty-format-json
         args: ["--autofix", "--no-sort-keys"]
 
-  # Runs the same checks as CI. Add your formatter's own hook here if you want
-  # autofix on commit (for example ruff, prettier).
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.4
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
   - repo: local
     hooks:
-      - id: just-ci
-        name: just ci
-        entry: just ci
+      - id: pyright
+        name: pyright
+        entry: uv run pyright
         language: system
+        types: [python]
         pass_filenames: false
-        always_run: true
+
+      - id: pytest
+        name: pytest
+        entry: uv run pytest
+        language: system
+        types: [python]
+        pass_filenames: false

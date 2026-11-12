@@ -8,11 +8,10 @@ updates:
       actions:
         patterns: ["*"]
 
-  # Add the ecosystem of your stack here, for example `uv`, `npm` or `cargo`:
-  # - package-ecosystem: uv
-  #   directory: /
-  #   schedule:
-  #     interval: weekly
-  #   groups:
-  #     deps:
-  #       patterns: ["*"]
+  - package-ecosystem: uv
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      python:
+        patterns: ["*"]

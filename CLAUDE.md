@@ -1,16 +1,14 @@
 # <project name>
 
-<!-- Fill the "Project" section when you start a project from this template.
-     The tech lead checks it before starting work. -->
+<!-- This is the CodeFactory template. The migration (TICKET-0000) fills the
+     "Project" section and tunes the rest for the new project. -->
 
 ## Project
 
 <One paragraph: what this project is and who it is for.>
 
+- **Purpose:** <throwaway | proof of concept | personal tool | production system>
 - **<Component or feature>** — <one line.>
-- **<Component or feature>** — <one line.>
-
-> <Optional: the one sentence that states the principle of the project.>
 
 This file is the map of the repo. Read it at the start of every task.
 The project uses no third-party planning tools — the backlog, the
@@ -19,8 +17,8 @@ git as markdown.
 
 ## Where things live
 
-- **`<source dir>/`** — the code. <Name the package or app folder.>
-- **`<tests dir>/`** — the test suite that CI runs. Mirrors the code
+- **`src/python/`** — the Python code. The package is `src/python/app/`.
+- **`tests/`** — the test suite that CI runs. Mirrors the package
   layout.
 - **`qa/`** — the QA suites, one folder per ticket (`qa/TICKET-XXXX/`).
   The `qa` agent writes them. CI does not run them. Run one with
@@ -48,25 +46,35 @@ git as markdown.
 
 ## Commands
 
-All tasks run through `just`. The recipes call the stack's own tools, so
-the agents never need to know which stack the project uses.
+All tasks run through `just`. The environment is managed by `uv`.
 
-- `just check` — format, lint, type-check and test, with autofix. Run it
-  before every push.
+- `just env` — create `.venv` and install dev dependencies.
+- `just check` — format, lint, type-check and test. Run it before every
+  push.
 - `just ci` — the same checks CI runs, without autofix.
 - `just qa TICKET-XXXX` — run one ticket's QA suite. Not part of CI.
+- `just commit` — stage everything and commit with an empty message. A
+  shortcut for the human. Agents write a real commit message.
 - `just --list` — every recipe. Recipes in the group `try it` are small
   features a person can run by hand, such as a terminal chat or a page.
   Every such feature has one, with a one-line comment, so the human can
   keep track of them. A ticket that adds a feature a person can run adds
   its recipe in the same pull request. The `README.md` lists them.
 
-Stack details the agents need — the package command, the cache folders
-to clear before a mutation check, the marker for live tests — go here:
+When `just` is not installed, run a recipe with
+`uvx --from rust-just just <recipe>`.
 
-- Package command: `<for example: uv add <pkg>, npm install <pkg>>`
-- Caches to clear: `<for example: every __pycache__, .pytest_cache>`
-- Live test marker: `<for example: @pytest.mark.live>`
+Stack details:
+
+- Package command: `uv add <pkg>` (or `uv add --dev <pkg>`), never by
+  editing `uv.lock` by hand. Commit `pyproject.toml` and `uv.lock`
+  together.
+- Caches to clear before you break code on purpose to test a test: every
+  `__pycache__`. Also set `PYTHONDONTWRITEBYTECODE=1` in the subprocess.
+  A stale `.pyc` can make Python run the old code.
+- Test runner: `pytest`. Live test marker: `@pytest.mark.live`. `pytest`
+  runs only `tests/`, and `ruff` skips `qa/`.
+- Run command for recipes: `uv run ...`.
 
 ## What "correct" means here
 
@@ -81,9 +89,10 @@ report it, do not silently pick a side.
    including at least one failure path. Tests never call the network or
    a paid service; use fakes. A test that needs a live service is marked
    and skipped by default.
-2. **Typed and linted.** Use the strongest static checks the stack
-   offers. They must report zero errors. Prefer typed data structures
-   over loose dicts or maps at component boundaries.
+2. **Types everywhere.** Public functions have full type hints. Pyright
+   runs in standard mode and must report zero errors. Prefer typed data
+   structures (dataclasses, Pydantic models) over loose dicts at
+   component boundaries.
 3. **Simple first.** No abstraction before the second real use. No deep
    inheritance. Small functions with one job.
 4. **No secrets in git.** Keys come from environment variables, loaded
@@ -92,12 +101,11 @@ report it, do not silently pick a side.
 5. **Record hard-to-reverse decisions.** A new framework, data store,
    external provider or component boundary gets an ADR in
    `docs/decisions/` in the same pull request.
-
-### Project-specific standards
-
-Add the rules that only this project needs here, each with a reason.
-Delete this heading if there are none. See `docs/ADOPTING.md` for
-examples.
+6. **No `__init__.py` files.** Modern Python does not need them. Folders
+   without one are namespace packages, and imports work the same. Do not
+   add one to a package, a test folder or a `qa/` folder. Tests run with
+   `--import-mode=importlib`, so two test files may share a name in
+   different folders. A new one in a diff is a review finding.
 
 ## Rules for every session, human or agent
 

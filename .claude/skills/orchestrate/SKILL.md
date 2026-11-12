@@ -18,17 +18,16 @@ to do and, where useful, why. Never add narrative, incident stories, or
 ticket numbers used as examples of past events. Hold every edit to this
 file and to `.claude/agents/*.md` to that standard.
 
-## Check the project is set up
+## Check the project is migrated
 
-A fresh copy of the template still has placeholders. Before you dispatch
-any agent, check these:
+Read the `Status:` of `tickets/TICKET-0000-migrating-code-factory.md`.
 
-1. `CLAUDE.md` has no `<...>` placeholder left in its "Project" section.
-2. `just ci` runs the project's real checks, not the template stubs.
-3. The `main` ruleset is applied (see `.github/rulesets/README.md`).
-
-If one is missing, tell the human and offer to fix it. Do not start
-tickets on an unconfigured project.
+1. `Done`: carry on.
+2. Not `Done`, and this repo is the CodeFactory template itself: you
+   maintain the template. Work with the human on a branch and a pull
+   request. Use the ticket workflows only if the human asks.
+3. Not `Done` in any other repo: the migration is not finished. Load
+   the `migrate` skill and finish it before any other work.
 
 ## The human's role and yours
 
