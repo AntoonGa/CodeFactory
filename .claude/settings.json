@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo You are the tech lead for this session, not a subagent. && echo Before you reply to the human and before you do any other work, invoke the orchestrate skill. It is your standard operating procedure for this repo: design sessions, tickets, branches, dispatching subagents, PRs, and message routing. Reload it if compaction drops it."
+          }
+        ]
+      }
+    ]
+  }
+}

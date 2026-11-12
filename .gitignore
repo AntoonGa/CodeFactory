@@ -1,0 +1,20 @@
+# Secrets and local environment
+.env
+.envrc
+
+# Claude Code local state (never repo content)
+.claude/worktrees/
+.claude/settings.local.json
+
+# OS and editors
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local data and run output
+data/
+.cache/
+*.log
+
+# Add the ignores of your stack below (build output, virtualenvs, caches).
+# Tip: start from https://github.com/github/gitignore
