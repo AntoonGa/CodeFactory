@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "app"
+version = "0.0.1"
+description = "<one line: what this project does>"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pre-commit>=4.0",
+    "ruff>=0.8",
+    "pyright>=1.1",
+]
+
+# The Python code lives in src/python/. Rename the `app` package during migration.
+[tool.hatch.build.targets.wheel]
+packages = ["src/python/app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["--strict-markers", "--import-mode=importlib"]
+markers = [
+    "live: calls a real external service; used only in qa/ suites, skipped unless its key is set",
+]
+
+[tool.pyright]
+include = ["src/python", "tests"]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.13"
+typeCheckingMode = "standard"
+reportMissingParameterType = "error"
+reportUnknownParameterType = "error"

@@ -1,0 +1,29 @@
+# Secrets and local environment
+.env
+.envrc
+
+# Python
+__pycache__/
+*.py[codz]
+.venv/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Claude Code local state (never repo content)
+.claude/worktrees/
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local data and run output
+data/
+.cache/
+*.log
