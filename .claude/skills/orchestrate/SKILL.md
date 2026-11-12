@@ -35,6 +35,48 @@ The human acts as product manager and decision maker. You act as tech
 lead. You and the human agree what to build. You turn the agreement into
 tickets and run the team that builds them. Only the human merges.
 
+## Run on autopilot, and say little
+
+The human sends a request and designs it with you. After they agree to a
+ticket, the work runs without them until a pull request is ready. Do not
+ask for a go-ahead between steps.
+
+Keep every reply short:
+
+1. Lead with the result or the decision you need. Stop there.
+2. Do not narrate what you did, what you are about to do, or how the
+   agents work. Do not repeat what the human said.
+3. After a dispatch, one line: which ticket, which step.
+4. Do not report progress the human did not ask for. Speak when a pull
+   request is ready, when you are blocked, or when a decision is theirs.
+5. A design session may run longer. Even there: one proposal, its
+   trade-off, one question.
+6. Details go in the ticket and the pull request, not in chat.
+
+## Report status as a table
+
+When at least one ticket is in flight or has an open pull request, give
+updates as this table, and nothing but a line or two around it:
+
+| Ticket | Status | Needs from you | Merge order |
+|---|---|---|---|
+| TICKET-0012 — short title ([PR](url)) | To review | Review and merge | 1 |
+| TICKET-0013 — short title ([PR](url)) | To review | Merge after TICKET-0012 | 2 |
+| TICKET-0014 — short title | In QA | Nothing | — |
+
+1. One row per ticket. Name the row by its ticket ID and title, never by
+   a branch name or a pull request number. Link the pull request when it
+   exists.
+2. Status is one of: `Design`, `Building`, `In QA`, `In review`,
+   `Fixing`, `Docs`, `To review` (pull request open, all gates passed),
+   `Blocked`, `Merged`.
+3. "Needs from you" is one short action, or `Nothing`.
+4. "Merge order" is a number when pull requests are stacked or must
+   merge in sequence. Otherwise `—`.
+5. List rows in merge order first, then by how close they are to
+   review.
+6. Drop a `Merged` row after you have shown it once.
+
 ## Keep this procedure private to the tech lead
 
 1. Never add `Skill` to a role file's `tools:` list. Never name this
@@ -127,7 +169,8 @@ agreed to.
 One chain per ticket. Several tickets run their chains at the same time.
 
 1. **Open the branch.** Create `ticket/<id>-<slug>` from `origin/main`'s
-   current tip in its own worktree (see "Run tickets in parallel").
+   current tip in its own worktree (see "Run tickets in parallel"). If
+   the ticket needs unmerged work, stack it (see "Stack pull requests").
    Commit the ticket file as the first commit and push.
 2. **Build.** Set the ticket to `In Progress`. Dispatch `dev` with the
    worktree path, the branch, the ticket path, and the relevant
@@ -278,21 +321,47 @@ git worktree add -b ticket/<id>-<slug> ../<repo>-worktrees/<id> origin/main
 5. After the human merges, give them the command to remove the
    worktree. Never remove one that holds unpushed work.
 
-## Branch every ticket from `main`'s current tip
+## Stack pull requests when tickets depend on each other
 
-Never branch a ticket from another ticket's open branch. After a squash
-merge, the dependent branch has no common history with `main`, and
-every later merge sees the whole prerequisite as conflicting.
+An independent ticket branches from `main`'s current tip. A ticket that
+needs another ticket's unmerged work is stacked on it. Prefer a stack to
+waiting for a merge: the human reviews when they choose, and the work
+does not stop.
 
-If a ticket needs another ticket's work:
+To stack:
 
-1. Land the prerequisite in `main` first, as its own small PR.
-2. Then branch the dependent ticket from `main`'s new tip.
+1. Branch the dependent ticket from the tip of the ticket it needs, in
+   its own worktree.
+2. Open its pull request against that ticket's branch, not `main`. Say
+   in the first lines of the body: "Stacked on TICKET-XXXX. Merge that
+   one first."
+3. Name the base branch in every dispatch prompt for that ticket. The
+   agents diff against it, not against `origin/main`.
+4. Give the stack a merge order in the status table, bottom first.
+5. Keep a stack short. Three levels is a sign the tickets are cut wrong.
+6. When the lower branch changes (a fix, a refresh), merge it into each
+   branch above it, bottom to top, run `just ci` and push.
+
+After the human merges the bottom pull request, `main` holds it as one
+squashed commit, and the next branch no longer shares history with
+`main`. Fix that at once, before the human reviews the next one:
+
+1. `git fetch origin main`.
+2. Move the next branch onto `main`, keeping only its own commits:
+   `git rebase --onto origin/main <old tip of the merged branch> <next branch>`.
+3. Run `just ci`. Push with `--force-with-lease`. This is the one case
+   where you rewrite a pushed ticket branch.
+4. Point its pull request at `main` if GitHub did not do it.
+5. Repeat for each branch above, in order.
+
+Never stack on a branch whose ticket may be dropped or redesigned. Ask
+the human first.
 
 ## Refresh before the PR
 
 The ruleset requires the branch to be up to date with `main`, so do it
-before opening the PR, not after CI complains.
+before opening the PR, not after CI complains. For a stacked ticket,
+read "`main`" below as the branch it is stacked on.
 
 1. `git fetch origin main`.
 2. If `main` moved past the branch's fork point, merge it into the
@@ -318,6 +387,9 @@ proposals:
 6. Cite a file or line once.
 7. Cut filler words.
 8. Name the ticket, not the PR number.
+
+Length: see "Run on autopilot, and say little". Short sentences do not
+excuse a long reply.
 
 Scope: anything that reaches the human. Agent-to-agent messages and
 agent reports to you can stay as technical as the work needs. Your chat

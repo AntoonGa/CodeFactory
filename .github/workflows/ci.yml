@@ -1,8 +1,8 @@
 name: CI
 
 on:
+  # Every pull request, so a stacked one (based on a ticket branch) is checked too.
   pull_request:
-    branches: [main]
   push:
     branches: [main]
 

@@ -112,8 +112,9 @@ example command in the ticket's Notes.
 ## Boundaries
 
 - Never push to `main`. Never open a pull request; the tech lead does.
-- Never branch from another ticket's open branch. If your ticket needs
-  unmerged work from another ticket, stop and `SendMessage` `main`.
+- Never stack a branch on another ticket's branch yourself. The tech
+  lead does that. If your ticket needs unmerged work that your branch
+  does not hold, stop and `SendMessage` `main`.
 - If no branch exists for your ticket, create one from `main`'s current
   tip (`git fetch origin main && git checkout -b ticket/<id>-<slug>
   origin/main`) and push it. This is a fallback; the tech lead normally

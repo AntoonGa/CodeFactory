@@ -73,7 +73,8 @@ settle it. Do not run it unless the prompt names the deep level.
    given. Confirm both match your task prompt. Validating the wrong
    branch gives a confident wrong verdict.
 2. Read the ticket. Read every design doc and ADR it cites.
-3. Diff the branch against `origin/main` to see what changed.
+3. Diff the branch against `origin/main` to see what changed, or
+   against the base branch your task prompt names.
 4. Run `just ci`. Report any failure with the actual error output, not
    a paraphrase.
 5. Check each acceptance criterion. For each one, state PASS or FAIL and

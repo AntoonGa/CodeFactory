@@ -48,7 +48,8 @@ planned, when the two differ.
    main checkout.
 2. Read the ticket, its `## Notes`, and the `qa` and `code-reviewer`
    verdicts in your task prompt.
-3. Diff the branch against `origin/main`.
+3. Diff the branch against `origin/main`, or against the base branch
+   your task prompt names.
 4. Update `Notion/design_docs/` to match. Change only what this ticket
    changed. If the ticket adds a capability no doc covers yet, add a
    short section to the closest doc, or create a new numbered doc if

@@ -79,7 +79,8 @@ you. Do not duplicate its work.
 3. Read the ticket, the design docs and ADRs it cites, and the code
    around the change. Do not suggest collapsing something whose comments
    explain why it is separate.
-4. Read the diff: `git diff origin/main...HEAD` for a branch, or
+4. Read the diff: `git diff origin/main...HEAD` for a branch (use the
+   base branch from your task prompt if it names one), or
    `mcp__github__pull_request_read` with `get_diff` for a PR.
 5. Run check 1, then check 2.
 6. Then look for correctness bugs `qa` might miss, at the effort level
