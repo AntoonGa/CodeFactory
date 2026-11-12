@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+
+  # Add the ecosystem of your stack here, for example `uv`, `npm` or `cargo`:
+  # - package-ecosystem: uv
+  #   directory: /
+  #   schedule:
+  #     interval: weekly
+  #   groups:
+  #     deps:
+  #       patterns: ["*"]

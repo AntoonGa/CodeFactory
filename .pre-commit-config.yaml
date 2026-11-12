@@ -1,0 +1,30 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: no-commit-to-branch
+        args: ["--branch", "main"]
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-illegal-windows-names
+      - id: check-added-large-files
+      - id: detect-private-key
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: pretty-format-json
+        args: ["--autofix", "--no-sort-keys"]
+
+  # Runs the same checks as CI. Add your formatter's own hook here if you want
+  # autofix on commit (for example ruff, prettier).
+  - repo: local
+    hooks:
+      - id: just-ci
+        name: just ci
+        entry: just ci
+        language: system
+        pass_filenames: false
+        always_run: true
