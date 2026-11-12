@@ -22,11 +22,11 @@ git as markdown.
 - **`qa/`** — the QA suites, one folder per ticket (`qa/TICKET-XXXX/`).
   The `qa` agent writes them. CI does not run them. Run one with
   `just qa TICKET-XXXX`.
-- **`Jira tickets/`** — the backlog. The folder name is a joke; there is
+- **`Jira_tickets/`** — the backlog. The folder name is a joke; there is
   no Jira. One file per ticket
   (`TICKET-XXXX-slug.md`), plus `TEMPLATE.md` (copy it to start a
   ticket) and `proposals/` (ideas and research, not yet tickets).
-  `Jira tickets/README.md` holds the ticket lifecycle. Every ticket opens
+  `Jira_tickets/README.md` holds the ticket lifecycle. Every ticket opens
   with `## What?`, `## Why?` and `## How?` — a plain-English summary for
   a reader who does not read code. Keep them true and keep them plain;
   the rest of the ticket stays as technical as the work needs.

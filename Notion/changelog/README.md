@@ -2,7 +2,7 @@
 
 One file per period, named `CHANGELOG_<start>_<end>.md` (ISO dates,
 `YYYY-MM-DD`, inclusive). Record changes only — no process narrative, no
-design debate. That history lives in `Jira tickets/`, in the tickets and
+design debate. That history lives in `Jira_tickets/`, in the tickets and
 in `proposals/`, and in `Notion/decisions/`.
 
 Group entries by area (for example: Features, Fixes, Infrastructure,

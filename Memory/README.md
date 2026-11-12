@@ -5,7 +5,7 @@ constraints, preferences and special requests. It is the repo's memory
 of how the human wants the work done.
 
 - A design choice about the product goes in `Notion/`.
-- A piece of work goes in `Jira tickets/`.
+- A piece of work goes in `Jira_tickets/`.
 - A standing request from the human goes here. Examples: "never add a
   dependency without asking", "screenshots in every pull request for a
   page", "I review on my phone, keep pull requests small".

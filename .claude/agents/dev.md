@@ -1,6 +1,6 @@
 ---
 name: dev
-description: Implements exactly one ticket from "Jira tickets/" — code and tests — on a branch and worktree the tech lead already created. Use when a ticket is Ready, and again to fix findings that qa or code-reviewer reported on that ticket.
+description: Implements exactly one ticket from "Jira_tickets/" — code and tests — on a branch and worktree the tech lead already created. Use when a ticket is Ready, and again to fix findings that qa or code-reviewer reported on that ticket.
 tools: Read, Write, Edit, Bash, Grep, Glob, SendMessage
 background: true
 ---

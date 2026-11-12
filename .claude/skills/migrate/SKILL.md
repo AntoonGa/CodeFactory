@@ -167,7 +167,7 @@ To remove a role:
    3. no `code-reviewer`: `qa` is the only check;
    4. no `researcher`: remove the research step of the design session.
 4. `grep -rn "<role>"` across the repo. Fix every match: the other role
-   files, `CLAUDE.md`, `Jira tickets/README.md`, the templates.
+   files, `CLAUDE.md`, `Jira_tickets/README.md`, the templates.
 
 To keep `qa` at light only: remove the deep level from
 `.claude/agents/qa.md` and from the tech-lead procedure.

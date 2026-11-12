@@ -13,7 +13,7 @@ reports.
 
 Do not answer from memory alone.
 
-1. Read the `Status:` line of every ticket in `Jira tickets/` that is
+1. Read the `Status:` line of every ticket in `Jira_tickets/` that is
    not `Done`, plus any that became `Done` since the last table.
 2. List the open pull requests and their check results.
 3. Note which agents are running now, and on which ticket.

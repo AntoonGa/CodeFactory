@@ -1,4 +1,4 @@
-# Jira tickets
+# Jira_tickets
 
 The backlog for this project, living entirely in git. (The
 folder name is a joke; there is no Jira.)

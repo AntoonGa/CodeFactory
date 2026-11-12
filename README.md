@@ -18,7 +18,7 @@ the pull requests.
 | Status command | `.claude/skills/wawa/` | Type `/wawa` (where are we at) for one short table: every ticket, its status, what it needs from you, the merge order |
 | Role agents | `.claude/agents/` | `dev`, `qa`, `code-reviewer`, `docs-sync`, `researcher` |
 | Session hook | `.claude/settings.json` | Makes the main session load the tech-lead procedure at start |
-| Backlog | `Jira tickets/` | One markdown file per ticket. `TICKET-0000` is the migration |
+| Backlog | `Jira_tickets/` | One markdown file per ticket. `TICKET-0000` is the migration |
 | Docs | `Notion/` | Design docs, decision records (ADRs), changelog |
 | Memory | `Memory/` | Your standing requests and constraints, kept across sessions. A request that keeps coming back is proposed as a skill |
 | QA suites | `qa/` | One folder per ticket, written by the `qa` agent, not run in CI |

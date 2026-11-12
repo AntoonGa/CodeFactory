@@ -20,7 +20,7 @@ file and to `.claude/agents/*.md` to that standard.
 
 ## Check the project is migrated
 
-Read the `Status:` of `Jira tickets/TICKET-0000-migrating-code-factory.md`.
+Read the `Status:` of `Jira_tickets/TICKET-0000-migrating-code-factory.md`.
 
 1. `Done`: carry on.
 2. Not `Done`, and this repo is the CodeFactory template itself: you
@@ -206,7 +206,7 @@ agreed to.
       independent views.
    3. Tell each the IDs of the others.
    4. Combine their reports into one plain-English proposal for the
-      human. Commit it under `Jira tickets/proposals/` only if the human
+      human. Commit it under `Jira_tickets/proposals/` only if the human
       wants it kept.
 4. Once the human agrees, write the tickets (see "Writing a ticket").
    Write an ADR in `Notion/decisions/` for any hard-to-reverse choice,
@@ -215,7 +215,7 @@ agreed to.
 
 ## Writing a ticket
 
-1. Copy `Jira tickets/TEMPLATE.md`. Take the next free number.
+1. Copy `Jira_tickets/TEMPLATE.md`. Take the next free number.
 2. Write `## What?`, `## Why?` and `## How?` for a reader who knows the
    product and does not read code: plain English, no file names, no
    class names, no framework vocabulary.
