@@ -13,13 +13,13 @@ project in a short interview with you.
 ## Why?
 
 Every new project needs the same base before real work can start.
-Copying it by hand is slow, and an untuned copy is too heavy for a quick
-experiment and too light for a production system.
+Copying it by hand is slow, and an untuned copy does not fit the
+project: it may lack a role the work needs or carry one it does not.
 
 ## How?
 
 Claude copies CodeFactory as it is. Then it asks you what the project is
-for and proposes which helpers and checks to keep. It applies what you
+and proposes which helpers and checks it needs. It applies what you
 agree to, checks that everything runs, and opens one pull request. When
 you merge it, the project can start.
 
@@ -38,7 +38,7 @@ The whole migration is one branch and one pull request.
 - [ ] CodeFactory is imported as is, as the first commit of the branch
 - [ ] The human answered the tuning interview, and the decisions are
       recorded under "Decisions" below
-- [ ] `CLAUDE.md` describes this project and its purpose, with no
+- [ ] `CLAUDE.md` describes this project, with no
       placeholder left
 - [ ] The team matches the decisions: unused roles removed, new roles
       added, the tech-lead procedure updated, no stale reference to a
@@ -59,7 +59,7 @@ The whole migration is one branch and one pull request.
 
 <Filled during the interview. One line per decision.>
 
-- Purpose:
+- Project:
 - Roles kept:
 - QA levels:
 - Roles added:

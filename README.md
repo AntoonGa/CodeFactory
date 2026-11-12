@@ -1,7 +1,7 @@
 # CodeFactory
 
-A reusable base for building personal software projects with Claude as a
-small team. Import it into a new repo, answer a few questions, merge one
+A reusable base for building production-grade software projects with
+Claude as a small team. Import it into a new repo, answer a few questions, merge one
 pull request, and start.
 
 You talk to one Claude session, the **tech lead**. It runs design
@@ -55,34 +55,20 @@ Migrating Code Factory`, and one pull request.
 1. **Imports CodeFactory as is.** The first commit of the branch is an
    unchanged copy, so the tuning that follows is easy to review.
 2. **Interviews you**, before any pull request:
-   1. *Purpose.* What is the project? Is it a throwaway, a proof of
-      concept, a personal tool or a production system?
-   2. *Team.* Which roles to keep. Whether `qa` runs light only, or
-      light and deep. Whether you need a role or a workstream that is
-      not in the box.
-   3. *Process weight.* Design docs, decision records, changelog, ticket
-      format, branch protection, notifications.
+   1. *The project.* What it is, who uses it, its main parts.
+   2. *Team.* The full team is the default. Whether to drop a role,
+      whether `qa` runs light and deep, and whether you need a role or a
+      workstream that is not in the box.
+   3. *Process.* Branch protection and notifications.
    4. *Stack and standards.* Python or another stack, the package name,
       and rules that fit the product.
 
-   Claude proposes an answer to each question from the purpose. You
-   decide.
+   Claude proposes an answer to each question. You decide.
 3. **Tunes the copy.** It fills `CLAUDE.md`, removes or adds roles,
    updates the tech-lead procedure, renames the package, and writes the
    first `README.md` and roadmap from what you said.
 4. **Verifies and ships.** `just ci` passes, the ticket is `Done`, and
    one pull request holds everything.
-
-### What you get from the purpose
-
-| Purpose | Proposed team | Proposed process |
-|---|---|---|
-| Throwaway | `dev` | Short tickets, no docs |
-| Proof of concept | `dev`, `code-reviewer`, light `qa` if wanted | Roadmap only |
-| Personal tool | All roles, `qa` light by default | Design docs and ADRs |
-| Production system | All roles, `qa` light and deep | Everything, ruleset applied |
-
-These are starting proposals. The interview settles the real answer.
 
 ## The workflow in short
 

@@ -74,36 +74,24 @@ your recommendation first.
 Skip a question the human already answered. Do not ask what you can read
 in the target.
 
-### Round 1 — Purpose (always ask)
+### Round 1 — The project (always ask)
 
 1. What is the project, in one or two sentences? Who uses it?
-2. What kind of project is it?
-   1. **Throwaway** — an experiment that may be deleted next week.
-   2. **Proof of concept** — shows an idea works; may be rewritten.
-   3. **Personal tool** — kept and used, by one person or a few.
-   4. **Production system** — other people depend on it.
-3. What are its main parts, if known?
+2. What are its main parts, if known?
 
-The answer to question 2 drives every proposal below. Record it in
-`CLAUDE.md` as the project's purpose.
+Every repo made from CodeFactory is built to production grade. Do not
+offer a lighter mode.
 
 ### Round 2 — The team (always ask)
 
-Propose a team from the purpose. Say what each role costs: more roles
-mean slower tickets and more tokens.
+Propose the full team: `dev`, `code-reviewer`, `qa` at light and deep,
+`docs-sync` and `researcher`. Drop a role only when the human asks for
+it or the project gives it no work.
 
-| Purpose | `dev` | `code-reviewer` | `qa` | `docs-sync` | `researcher` |
-|---|---|---|---|---|---|
-| Throwaway | yes | no | no | no | no |
-| Proof of concept | yes | yes | light only, or no | no | on request |
-| Personal tool | yes | yes | light; deep on request | yes | on request |
-| Production system | yes | yes | light and deep | yes | yes |
-
-Ask these, with the table as your proposal:
-
-1. Which roles do we keep?
-2. For `qa`: none, light only, or light and deep? Deep means repeated
-   runs, breaking the code on purpose to test the tests, and killing
+1. Do we keep every role? Say which one you would drop, if any, and
+   why.
+2. For `qa`: light and deep, or light only? Deep means repeated runs,
+   breaking the code on purpose to test the tests, and killing
    processes mid-work. It suits concurrency, saving and recovery.
 3. Do we need a role that is not in the box? Offer the ones that fit
    the project, for example:
@@ -114,22 +102,15 @@ Ask these, with the table as your proposal:
 4. Do we need a workstream that is not in the box? The box has three:
    design session, development, and a change that alters no behavior.
    Offer the ones that fit, for example:
-   1. a quick-fix path for small bugs, with fewer gates;
-   2. a spike path for throwaway experiments that never merge;
-   3. a release path: version, changelog, deploy.
+   1. a quick-fix path for small bugs;
+   2. a release path: version, changelog, deploy.
 
-### Round 3 — Process weight
+### Round 3 — Process
 
-Propose from the purpose. Ask only where a real choice exists.
-
-1. **Docs.** Keep design docs, ADRs and the changelog? A throwaway
-   needs none. A proof of concept needs a roadmap only.
-2. **Tickets.** Keep the full template, or a short form (What, Why,
-   acceptance criteria)?
-3. **Branch protection.** Apply the `main` ruleset? It needs a public
+1. **Branch protection.** Apply the `main` ruleset? It needs a public
    repo or a paid plan. Pull requests that the human merges stay in
    every case.
-4. **Notifications.** Push notification for each pull request, or chat
+2. **Notifications.** Push notification for each pull request, or chat
    only?
 
 ### Round 4 — Stack and standards
@@ -161,8 +142,7 @@ Apply the decisions. Commit in small steps, each message starting with
 
 ### The project
 
-1. Fill the "Project" section of `CLAUDE.md`: name, paragraph, purpose,
-   parts. Remove the template comment.
+1. Fill the "Project" section of `CLAUDE.md`: name, paragraph, parts. Remove the template comment.
 2. Rename the `app` package: the folder under `src/python/`, the
    `[project]` name, the wheel path in `pyproject.toml`,
    `known-first-party` in `ruff.toml`, the import in the tests, and the
@@ -211,9 +191,8 @@ Never name a skill in a role file or in `CLAUDE.md`.
 
 ### The process
 
-1. Remove what the human dropped: `Notion/decisions/`, `Notion/changelog/`,
-   sections of `Jira tickets/TEMPLATE.md`, the notification step. Remove each
-   reference to it.
+1. If the human chose chat only, remove the notification step from the
+   tech-lead procedure.
 2. If the ruleset is not applied, change rule 5 in `CLAUDE.md` and the
    matching text in the tech-lead procedure to say so.
 

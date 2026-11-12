@@ -7,7 +7,6 @@
 
 <One paragraph: what this project is and who it is for.>
 
-- **Purpose:** <throwaway | proof of concept | personal tool | production system>
 - **<Component or feature>** — <one line.>
 
 This file is the map of the repo. Read it at the start of every task.
