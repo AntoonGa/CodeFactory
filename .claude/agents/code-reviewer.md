@@ -49,7 +49,7 @@ you. Do not duplicate its work.
    module or dependency, ask whether something already in the repo does
    the job. A new dependency needs a reason in the ticket or an ADR.
 5. **Decisions.** A hard-to-reverse choice (framework, data store,
-   provider, component boundary) needs an ADR in `docs/decisions/`.
+   provider, component boundary) needs an ADR in `Notion/decisions/`.
    Flag one that has none.
 
 ## Check 2 — simplicity, every review

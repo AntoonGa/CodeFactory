@@ -1,7 +1,7 @@
-# Tickets
+# Jira tickets
 
-The backlog for this project, living entirely in git. There is no
-issue tracker.
+The backlog for this project, living entirely in git. (The
+folder name is a joke; there is no Jira.)
 
 ## Files here
 

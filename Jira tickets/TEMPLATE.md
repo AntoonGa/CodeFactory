@@ -33,8 +33,8 @@ above.>
 
 ## Design docs this depends on
 
-- `docs/design/...`
-- `docs/decisions/ADR-XXXX-...` (if an architecture decision applies)
+- `Notion/design_docs/...`
+- `Notion/decisions/ADR-XXXX-...` (if an architecture decision applies)
 
 ## Acceptance criteria
 

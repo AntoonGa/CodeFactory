@@ -44,7 +44,7 @@ The whole migration is one branch and one pull request.
       added, the tech-lead procedure updated, no stale reference to a
       removed role
 - [ ] The package, `pyproject.toml`, `README.md` and
-      `docs/design/roadmap.md` carry this project's name and content
+      `Notion/design_docs/roadmap.md` carry this project's name and content
 - [ ] `just ci` passes
 - [ ] The template-only files are gone (see the procedure)
 - [ ] One pull request holds the whole migration

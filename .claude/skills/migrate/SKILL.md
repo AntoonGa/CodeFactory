@@ -185,7 +185,7 @@ To remove a role:
    3. no `code-reviewer`: `qa` is the only check;
    4. no `researcher`: remove the research step of the design session.
 4. `grep -rn "<role>"` across the repo. Fix every match: the other role
-   files, `CLAUDE.md`, `tickets/README.md`, the templates.
+   files, `CLAUDE.md`, `Jira tickets/README.md`, the templates.
 
 To keep `qa` at light only: remove the deep level from
 `.claude/agents/qa.md` and from the tech-lead procedure.
@@ -209,8 +209,8 @@ Never name a skill in a role file or in `CLAUDE.md`.
 
 ### The process
 
-1. Remove what the human dropped: `docs/decisions/`, `docs/changelog/`,
-   sections of `tickets/TEMPLATE.md`, the notification step. Remove each
+1. Remove what the human dropped: `Notion/decisions/`, `Notion/changelog/`,
+   sections of `Jira tickets/TEMPLATE.md`, the notification step. Remove each
    reference to it.
 2. If the ruleset is not applied, change rule 5 in `CLAUDE.md` and the
    matching text in the tech-lead procedure to say so.
@@ -235,7 +235,7 @@ Use what the interview told you.
 1. `README.md`: replace it. Project name, the one-paragraph
    description, a quick start (`just env`, `just check`), the command
    list, and a short "How we work" section that names the roles kept.
-2. `docs/design/roadmap.md`: the product in one sentence, its parts,
+2. `Notion/design_docs/roadmap.md`: the product in one sentence, its parts,
    and what comes first.
 3. Offer to write the first tickets as `Backlog` from what the human
    said. Write them only on a yes.
@@ -251,7 +251,7 @@ Use what the interview told you.
 ## Step 6 — Verify
 
 1. `just ci` passes.
-2. `grep -rn "<[a-z][^>]*>" CLAUDE.md README.md docs/design/roadmap.md`
+2. `grep -rn "<[a-z][^>]*>" CLAUDE.md README.md Notion/design_docs/roadmap.md`
    finds no placeholder.
 3. Every role named anywhere has a file, and every role file is named
    in the team table.

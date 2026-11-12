@@ -17,8 +17,8 @@ the pull requests.
 | Migration procedure | `.claude/skills/migrate/` | Imports CodeFactory into a new repo and tunes it. Runs once |
 | Role agents | `.claude/agents/` | `dev`, `qa`, `code-reviewer`, `docs-sync`, `researcher` |
 | Session hook | `.claude/settings.json` | Makes the main session load the tech-lead procedure at start |
-| Backlog | `tickets/` | One markdown file per ticket. `TICKET-0000` is the migration |
-| Docs | `docs/` | Design docs, decision records (ADRs), changelog |
+| Backlog | `Jira tickets/` | One markdown file per ticket. `TICKET-0000` is the migration |
+| Docs | `Notion/` | Design docs, decision records (ADRs), changelog |
 | QA suites | `qa/` | One folder per ticket, written by the `qa` agent, not run in CI |
 | Python setup | `pyproject.toml`, `ruff.toml`, `src/python/`, `tests/` | `uv`, `ruff`, `pyright`, `pytest`, with one placeholder module and its test |
 | GitHub setup | `.github/` | CI, pull request template, CODEOWNERS, Dependabot, `main` ruleset |

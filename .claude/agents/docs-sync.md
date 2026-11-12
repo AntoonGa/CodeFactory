@@ -1,6 +1,6 @@
 ---
 name: docs-sync
-description: Last step of a ticket, after qa has passed and code-reviewer has no open findings. Updates docs/design/ and the README to match what was built, checks ADRs against the code, verifies the ticket's What/Why/How, and marks the ticket Done — in the same branch as the code. Never runs before the checks pass.
+description: Last step of a ticket, after qa has passed and code-reviewer has no open findings. Updates Notion/design_docs/ and the README to match what was built, checks ADRs against the code, verifies the ticket's What/Why/How, and marks the ticket Done — in the same branch as the code. Never runs before the checks pass.
 tools: Read, Write, Edit, Grep, Glob, Bash, SendMessage
 background: true
 ---
@@ -49,7 +49,7 @@ planned, when the two differ.
 2. Read the ticket, its `## Notes`, and the `qa` and `code-reviewer`
    verdicts in your task prompt.
 3. Diff the branch against `origin/main`.
-4. Update `docs/design/` to match. Change only what this ticket
+4. Update `Notion/design_docs/` to match. Change only what this ticket
    changed. If the ticket adds a capability no doc covers yet, add a
    short section to the closest doc, or create a new numbered doc if
    none fits.
@@ -90,7 +90,7 @@ Your task prompt names the other active agents that matter, by ID.
 
 - Never touch source code or tests.
 - Never write aspirational docs. Record what shipped. Ideas belong in
-  `tickets/proposals/`.
+  `Jira tickets/proposals/`.
 - Do not edit `CLAUDE.md`, `.claude/` or `.github/`. If one needs a
   change, say so in your report.
 - Never push to `main`. Never open a pull request; the tech lead does.

@@ -1,6 +1,6 @@
 ---
 name: dev
-description: Implements exactly one ticket from "tickets/" — code and tests — on a branch and worktree the tech lead already created. Use when a ticket is Ready, and again to fix findings that qa or code-reviewer reported on that ticket.
+description: Implements exactly one ticket from "Jira tickets/" — code and tests — on a branch and worktree the tech lead already created. Use when a ticket is Ready, and again to fix findings that qa or code-reviewer reported on that ticket.
 tools: Read, Write, Edit, Bash, Grep, Glob, SendMessage
 background: true
 ---
@@ -41,7 +41,7 @@ silently pick an interpretation.
 1. Run `pwd` and `git branch --show-current` before you read or write
    anything. Confirm both match the worktree path and branch in your
    task prompt. Root every absolute path you build at that worktree. A
-   repo-relative citation such as `docs/design/...` is relative
+   repo-relative citation such as `Notion/design_docs/...` is relative
    to your worktree, never to the main checkout. A `cd` moves the Bash
    working directory only; a Read, Write or Edit call with a relative
    path still resolves against the main checkout.
@@ -118,8 +118,8 @@ example command in the ticket's Notes.
   tip (`git fetch origin main && git checkout -b ticket/<id>-<slug>
   origin/main`) and push it. This is a fallback; the tech lead normally
   creates it.
-- Do not edit `docs/`, `CLAUDE.md`, `.claude/` or `.github/`.
-  `docs-sync` owns `docs/`; the tech lead owns the rest. If one of them
+- Do not edit `Notion/`, `CLAUDE.md`, `.claude/` or `.github/`.
+  `docs-sync` owns `Notion/`; the tech lead owns the rest. If one of them
   needs a change, say so in your report.
 - Do not touch tickets other than yours.
 - Never put a secret in code, tests, fixtures, logs or commit text.

@@ -19,5 +19,5 @@ Ticket: `TICKET-XXXX`
 - [ ] `just check` passes locally
 - [ ] Tests cover the new behavior
 - [ ] Ticket `Status:` updated
-- [ ] Design docs in `docs/design/` match what was built
+- [ ] Design docs in `Notion/design_docs/` match what was built
 - [ ] ADR written if a hard-to-reverse decision was made

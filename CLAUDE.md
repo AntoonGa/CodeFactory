@@ -23,18 +23,20 @@ git as markdown.
 - **`qa/`** — the QA suites, one folder per ticket (`qa/TICKET-XXXX/`).
   The `qa` agent writes them. CI does not run them. Run one with
   `just qa TICKET-XXXX`.
-- **`tickets/`** — the backlog. One file per ticket
+- **`Jira tickets/`** — the backlog. The folder name is a joke; there is
+  no Jira. One file per ticket
   (`TICKET-XXXX-slug.md`), plus `TEMPLATE.md` (copy it to start a
   ticket) and `proposals/` (ideas and research, not yet tickets).
-  `tickets/README.md` holds the ticket lifecycle. Every ticket opens
+  `Jira tickets/README.md` holds the ticket lifecycle. Every ticket opens
   with `## What?`, `## Why?` and `## How?` — a plain-English summary for
   a reader who does not read code. Keep them true and keep them plain;
   the rest of the ticket stays as technical as the work needs.
-- **`docs/`** — the design docs and the record of what shipped.
-  - `docs/design/` is the source of truth for the product. Start with
+- **`Notion/`** — the design docs and the record of what shipped. The
+  folder name is a joke; there is no Notion.
+  - `Notion/design_docs/` is the source of truth for the product. Start with
     `roadmap.md`: it lists every design document.
-  - `docs/decisions/` holds Architecture Decision Records (ADRs).
-  - `docs/changelog/` records what shipped and when.
+  - `Notion/decisions/` holds Architecture Decision Records (ADRs).
+  - `Notion/changelog/` records what shipped and when.
 - **`.claude/agents/`** — the subagent role files: `dev` (builds a
   ticket), `qa` (checks behavior against the ticket), `code-reviewer`
   (checks structure and simplicity), `docs-sync` (makes the docs match
@@ -100,7 +102,7 @@ report it, do not silently pick a side.
    or put one in a test fixture.
 5. **Record hard-to-reverse decisions.** A new framework, data store,
    external provider or component boundary gets an ADR in
-   `docs/decisions/` in the same pull request.
+   `Notion/decisions/` in the same pull request.
 6. **No `__init__.py` files.** Modern Python does not need them. Folders
    without one are namespace packages, and imports work the same. Do not
    add one to a package, a test folder or a `qa/` folder. Tests run with
