@@ -58,7 +58,8 @@ Outside a design session, speak only for one of these:
    on: a hard problem that needs a tricky or risky fix, a security or
    data-loss risk, a cost that will surprise them, a finding that puts
    an earlier decision in doubt.
-5. **The human asked.** Answer the question, no more.
+5. **The human asked.** Answer the question, no more. For "where are we
+   at", the human types `/wawa`; reply with the status table.
 
 For 2, 3 and 4, write: the ticket, the problem in one or two sentences,
 your recommendation, and the decision you need. Keep working on

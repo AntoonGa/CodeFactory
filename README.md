@@ -15,6 +15,7 @@ the pull requests.
 |---|---|---|
 | Tech-lead procedure | `.claude/skills/orchestrate/` | Design sessions, tickets, branches, worktrees, dispatch, fix loop, pull request, notification |
 | Migration procedure | `.claude/skills/migrate/` | Imports CodeFactory into a new repo and tunes it. Runs once |
+| Status command | `.claude/skills/wawa/` | Type `/wawa` (where are we at) for one short table: every ticket, its status, what it needs from you, the merge order |
 | Role agents | `.claude/agents/` | `dev`, `qa`, `code-reviewer`, `docs-sync`, `researcher` |
 | Session hook | `.claude/settings.json` | Makes the main session load the tech-lead procedure at start |
 | Backlog | `Jira tickets/` | One markdown file per ticket. `TICKET-0000` is the migration |
@@ -94,6 +95,11 @@ These are starting proposals. The interview settles the real answer.
 5. The tech lead opens the pull request and notifies you. You merge.
 
 Nothing reaches `main` except through a pull request you merge.
+
+The tech lead stays quiet while the team works. It speaks when a pull
+request is ready, when it is blocked, when the design must change, or
+when something looks risky. Type `/wawa` at any time to see where things
+stand.
 
 ## Commands
 
