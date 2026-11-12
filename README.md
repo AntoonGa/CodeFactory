@@ -17,7 +17,7 @@ the pull requests.
 | Migration procedure | `.claude/skills/migrate/` | Imports CodeFactory into a new repo and tunes it. Runs once |
 | Status command | `.claude/skills/wawa/` | Type `/wawa` (where are we at) for one short table: every ticket, its status, what it needs from you, the merge order |
 | Role agents | `.claude/agents/` | `dev`, `qa`, `code-reviewer`, `docs-sync`, `researcher` |
-| Session hook | `.claude/settings.json` | Makes the main session load the tech-lead procedure at start |
+| Session settings | `.claude/settings.json` | Makes the main session load the tech-lead procedure at start. Pre-approves shell, file, web and GitHub tools so the agents never stop on a permission prompt |
 | Backlog | `Jira_tickets/` | One markdown file per ticket. `TICKET-0000` is the migration |
 | Docs | `Notion/` | Design docs, decision records (ADRs), changelog |
 | Memory | `Memory/` | Your standing requests and constraints, kept across sessions. A request that keeps coming back is proposed as a skill |

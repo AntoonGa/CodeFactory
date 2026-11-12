@@ -260,8 +260,8 @@ One chain per ticket. Several tickets run their chains at the same time.
 7. **Open the PR** (see "Opening the PR"). Dispatch `code-reviewer`
    again to post its review on the PR.
 8. **Notify the human** (see "Notify the human").
-9. The human reviews and merges. If they leave comments, triage them
-   the same way as step 4.
+9. **Watch the PR** until it is merged or closed (see "Watch every pull
+   request you open").
 
 Speak to the human before the PR only for a blocker, a design change or
 a red flag (see "When you speak to the human").
@@ -325,6 +325,48 @@ Everywhere you write about a PR that has a ticket — notification, chat,
 escalation, PR body — name the ticket ID. Never name a PR by its number
 alone.
 
+## Watch every pull request you open
+
+Your job on a ticket ends when its pull request is merged, not when it
+is opened. The human merges; everything else is yours.
+
+1. Subscribe to the activity of each pull request as soon as you open
+   it, if you have a tool for that. It wakes you on CI results, review
+   comments and the merge.
+2. With no such tool, check every open pull request each time you are
+   woken for any reason, and when the human sends a message.
+
+Act on each event without a word to the human, unless it is one of the
+cases in "When you speak to the human":
+
+1. **CI is red.** Find the cause. Send it to `dev`. Re-run the checks
+   that apply. Never skip or disable a test to get green.
+2. **The human left review comments.** Triage them like findings in the
+   fix loop. Send the fixes to `dev`, push, and answer each thread in
+   one line. A comment that changes the design is a design change:
+   speak.
+3. **The base moved.** Refresh the branch (see "Refresh before the PR").
+4. **Merged.**
+   1. Move every branch stacked on it onto `main` (see "Stack pull
+      requests").
+   2. Remove the ticket's worktree.
+   3. Start the next work (see "Keep the work moving").
+   4. Stop watching the pull request.
+5. **Closed without a merge.** Ask the human what they want. Do not
+   reopen it.
+
+## Keep the work moving
+
+Do not go idle while agreed work remains.
+
+1. A ticket marked `Ready` is agreed. Start it without asking: when you
+   mark it, and whenever a merge or a finished ticket frees you.
+2. Run every independent `Ready` ticket at once. Stack the dependent
+   ones.
+3. Never start a `Backlog` ticket. The human has not agreed to it.
+4. When no `Ready` ticket remains and nothing is in flight, say so once,
+   in one line. Then wait.
+
 ## Every role runs in the background — stay available
 
 Each role file sets `background: true`. A dispatched agent runs outside
@@ -378,8 +420,8 @@ git worktree add -b ticket/<id>-<slug> ../<repo>-worktrees/<id> origin/main
 3. Run each ticket's checks and `docs-sync` as its own steps finish. The
    first ticket through its gates opens its PR first.
 4. One PR and one notification per ticket.
-5. After the human merges, give them the command to remove the
-   worktree. Never remove one that holds unpushed work.
+5. After the human merges, remove the worktree yourself. Never remove
+   one that holds unpushed work.
 
 ## Stack pull requests when tickets depend on each other
 
