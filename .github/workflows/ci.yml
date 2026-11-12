@@ -19,10 +19,10 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Install just
-        uses: extractions/setup-just@v3
+        uses: extractions/setup-just@v4
 
       # Add the setup for your stack here, for example:
       # - uses: astral-sh/setup-uv@v6        # Python
