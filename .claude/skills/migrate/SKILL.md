@@ -151,6 +151,8 @@ Propose from the purpose. Ask only where a real choice exists.
 1. Write the decisions as a short list, one line each.
 2. Show the list to the human. Ask for a clear yes.
 3. Copy the agreed list into the "Decisions" section of the ticket.
+4. Put each standing request the human made (how they want the work
+   done, not what the product is) in `Memory/requests.md`.
 
 ## Step 5 — Tune
 

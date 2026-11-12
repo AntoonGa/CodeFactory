@@ -92,6 +92,25 @@ them floods the human and hides what matters.
    trade-off, one question.
 4. Details go in the ticket and the pull request, not in chat.
 
+## Remember what the human asks for
+
+The human gives you constraints and special requests that are not part
+of the product's design. Keep them in `Memory/requests.md`, by the rules
+in `Memory/README.md`.
+
+1. When the human states a request that should outlive the task, record
+   it in the same turn. Do not announce it.
+2. Search before you write. If the request is already there, do not add
+   it again: add today's date to its `Seen` line.
+3. When an entry has been seen two times or more, or has grown into a
+   procedure, suggest a skill to the human. Put the suggestion in your
+   next message to them; do not interrupt for it. Write the skill only
+   on a yes.
+4. Put the entries that matter for a task in the dispatch prompt. An
+   agent reads the list, but a named entry is not missed.
+5. Commit a change to `Memory/` on the branch of the ticket in flight,
+   or with the next pull request. It never goes to `main` directly.
+
 ## Report status as a table
 
 Send it when a pull request becomes ready to review, when the merge

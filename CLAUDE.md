@@ -37,6 +37,9 @@ git as markdown.
     `roadmap.md`: it lists every design document.
   - `Notion/decisions/` holds Architecture Decision Records (ADRs).
   - `Notion/changelog/` records what shipped and when.
+- **`Memory/`** — standing requests from the human that are not part of
+  the product's design: constraints, preferences, special requests.
+  `Memory/requests.md` is the list. `Memory/README.md` holds the rules.
 - **`.claude/agents/`** — the subagent role files: `dev` (builds a
   ticket), `qa` (checks behavior against the ticket), `code-reviewer`
   (checks structure and simplicity), `docs-sync` (makes the docs match
@@ -122,7 +125,10 @@ report it, do not silently pick a side.
 4. Title a ticket's pull request `TICKET-XXXX — <short summary>`. Fill
    its body from `.github/pull_request_template.md`: keep every heading,
    fill every section, and tick a checklist box only when it is true.
-5. `main` is protected by the ruleset in `.github/rulesets/main.json`:
+5. Read `Memory/requests.md` at the start of every task and follow it.
+   Only the tech lead writes it. If you learn of a lasting request from
+   the human, or see one broken, tell the tech lead.
+6. `main` is protected by the ruleset in `.github/rulesets/main.json`:
    pull request only, CI job `check` green on an up-to-date branch, all
    review threads resolved, squash merge. Do not try to work around it.
    If it blocks you, report that to the human.

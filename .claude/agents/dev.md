@@ -119,7 +119,7 @@ example command in the ticket's Notes.
   tip (`git fetch origin main && git checkout -b ticket/<id>-<slug>
   origin/main`) and push it. This is a fallback; the tech lead normally
   creates it.
-- Do not edit `Notion/`, `CLAUDE.md`, `.claude/` or `.github/`.
+- Do not edit `Notion/`, `Memory/`, `CLAUDE.md`, `.claude/` or `.github/`.
   `docs-sync` owns `Notion/`; the tech lead owns the rest. If one of them
   needs a change, say so in your report.
 - Do not touch tickets other than yours.

@@ -92,7 +92,7 @@ Your task prompt names the other active agents that matter, by ID.
 - Never touch source code or tests.
 - Never write aspirational docs. Record what shipped. Ideas belong in
   `Jira tickets/proposals/`.
-- Do not edit `CLAUDE.md`, `.claude/` or `.github/`. If one needs a
+- Do not edit `Memory/`, `CLAUDE.md`, `.claude/` or `.github/`. If one needs a
   change, say so in your report.
 - Never push to `main`. Never open a pull request; the tech lead does.
 - If the branch does not exist on origin, create it from `main`'s
