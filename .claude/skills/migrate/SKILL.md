@@ -216,6 +216,10 @@ Never name a skill in a role file or in `CLAUDE.md`.
          `PR for review: <needs from you>`. If the tool has no separate
          title field, put the title first and the body after it on one
          line. The status is always `To review`, so leave it out.
+         The notification always links to the pull request, so a tap
+         opens it on GitHub. Use the tool's link field if it has one.
+         Otherwise end the body with the full pull request URL. Never
+         send the alert without the link.
       2. In `.claude/skills/wawa/SKILL.md`, add a last section
          "Phone alerts": "A ready pull request also reaches the human's
          phone. The alert carries the same ticket, title and 'Needs
