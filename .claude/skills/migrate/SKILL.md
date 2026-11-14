@@ -110,8 +110,17 @@ it or the project gives it no work.
 1. **Branch protection.** Apply the `main` ruleset? It needs a public
    repo or a paid plan. Pull requests that the human merges stay in
    every case.
-2. **Notifications.** Push notification for each pull request, or chat
-   only?
+2. **Ready-for-review alerts.** How does the human learn that a pull
+   request is ready? Recommend the first option for a human who is often
+   away from the screen.
+   1. Phone and `/wawa`: a push notification reaches the phone for each
+      pull request. It carries the same row that `/wawa` shows for that
+      ticket. `/wawa` stays available.
+   2. `/wawa` only: nothing is pushed. The human types `/wawa` to see
+      what is ready.
+
+   The phone option needs a push-notification tool in the session. Check
+   for one. If there is none, say so and offer `/wawa` only.
 
 ### Round 4 — Stack and standards
 
@@ -191,8 +200,34 @@ Never name a skill in a role file or in `CLAUDE.md`.
 
 ### The process
 
-1. If the human chose chat only, remove the notification step from the
-   tech-lead procedure.
+1. Apply the human's choice for ready-for-review alerts.
+   1. `/wawa` only: in `.claude/skills/orchestrate/SKILL.md`, remove the
+      "Notify the human" section, step 8 of Workflow 2 (renumber the
+      steps after it), and the line "One PR and one notification per
+      ticket" in "Run tickets in parallel" (keep "One PR per ticket").
+      Also change "notify the human" to "report to the human" in the
+      skill's `description`. Leave `.claude/skills/wawa/SKILL.md` as it is.
+   2. Phone and `/wawa`: keep the notification and make it carry the
+      `/wawa` row.
+      1. In "Notify the human", replace the exact message. The
+         notification title is the ticket, exactly as the `/wawa` row
+         names it: `TICKET-XXXX — <ticket title>`, copied from the
+         ticket file, never reworded. The body is
+         `PR for review: <needs from you>`. If the tool has no separate
+         title field, put the title first and the body after it on one
+         line. The status is always `To review`, so leave it out.
+         The notification always links to the pull request, so a tap
+         opens it on GitHub. Use the tool's link field if it has one.
+         Otherwise end the body with the full pull request URL. Never
+         send the alert without the link.
+      2. In `.claude/skills/wawa/SKILL.md`, add a last section
+         "Phone alerts": "A ready pull request also reaches the human's
+         phone. The alert carries the same ticket, title and 'Needs
+         from you' as its row here. If the two differ, this table is
+         right."
+      3. Keep the `README.md` text that says the human gets a phone
+         alert. Under `/wawa` only, change it to say the human types
+         `/wawa` to see what is ready.
 2. If the ruleset is not applied, change rule 5 in `CLAUDE.md` and the
    matching text in the tech-lead procedure to say so.
 
@@ -245,7 +280,8 @@ Use what the interview told you.
 2. Push. Open one pull request titled
    `TICKET-0000 — Migrating Code Factory`. In the body, list the
    decisions and say that the first commit is the unchanged import.
-3. Notify the human, as the decisions say.
+3. Tell the human the pull request is ready, the way they chose: a
+   phone alert plus the `/wawa` row, or the `/wawa` row only.
 4. Tell the human what only they can do after the merge:
    1. set `main` as the default branch, if it was just created;
    2. apply the ruleset (`.github/rulesets/README.md`), if kept;

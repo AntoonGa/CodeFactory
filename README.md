@@ -59,7 +59,8 @@ Migrating Code Factory`, and one pull request.
    2. *Team.* The full team is the default. Whether to drop a role,
       whether `qa` runs light and deep, and whether you need a role or a
       workstream that is not in the box.
-   3. *Process.* Branch protection and notifications.
+   3. *Process.* Branch protection, and how you learn that a pull
+      request is ready: a phone alert plus `/wawa`, or `/wawa` only.
    4. *Stack and standards.* Python or another stack, the package name,
       and rules that fit the product.
 
@@ -79,7 +80,8 @@ Migrating Code Factory`, and one pull request.
 3. `dev` builds it. `qa` and `code-reviewer` check it in parallel. A fix
    loop closes findings.
 4. `docs-sync` updates the docs and marks the ticket `Done`.
-5. The tech lead opens the pull request and notifies you. You merge.
+5. The tech lead opens the pull request and tells you, by phone alert if
+   you chose one. You merge.
 
 Nothing reaches `main` except through a pull request you merge.
 
