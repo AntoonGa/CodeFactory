@@ -209,11 +209,13 @@ Never name a skill in a role file or in `CLAUDE.md`.
       skill's `description`. Leave `.claude/skills/wawa/SKILL.md` as it is.
    2. Phone and `/wawa`: keep the notification and make it carry the
       `/wawa` row.
-      1. In "Notify the human", replace the exact message with
-         `PR for review: TICKET-XXXX — <short title> — <needs from you>`.
-         The fields are those of the `/wawa` row: ticket, title and
-         "Needs from you". The status is always `To review`, so leave
-         it out.
+      1. In "Notify the human", replace the exact message. The
+         notification title is the ticket, exactly as the `/wawa` row
+         names it: `TICKET-XXXX — <ticket title>`, copied from the
+         ticket file, never reworded. The body is
+         `PR for review: <needs from you>`. If the tool has no separate
+         title field, put the title first and the body after it on one
+         line. The status is always `To review`, so leave it out.
       2. In `.claude/skills/wawa/SKILL.md`, add a last section
          "Phone alerts": "A ready pull request also reaches the human's
          phone. The alert carries the same ticket, title and 'Needs
